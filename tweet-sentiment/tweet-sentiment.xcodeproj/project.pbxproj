@@ -9,10 +9,22 @@
 /* Begin PBXBuildFile section */
 		A136FA669CE2A64C7EAC8AC4 /* Pods_tweet_sentiment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F590BFFDF6E9984FA42E1E5 /* Pods_tweet_sentiment.framework */; };
 		D1B99EE921EA36A2001AD490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99EE821EA36A2001AD490 /* AppDelegate.swift */; };
-		D1B99EEB21EA36A2001AD490 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99EEA21EA36A2001AD490 /* ViewController.swift */; };
-		D1B99EEE21EA36A2001AD490 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1B99EEC21EA36A2001AD490 /* Main.storyboard */; };
 		D1B99EF021EA36A4001AD490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1B99EEF21EA36A4001AD490 /* Assets.xcassets */; };
 		D1B99EF321EA36A4001AD490 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1B99EF121EA36A4001AD490 /* LaunchScreen.storyboard */; };
+		D1B99EFD21EA4BD9001AD490 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99EFC21EA4BD9001AD490 /* AppCoordinator.swift */; };
+		D1B99EFF21EA4BE3001AD490 /* AppConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99EFE21EA4BE3001AD490 /* AppConfigurator.swift */; };
+		D1B99F0221EA4C97001AD490 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F0121EA4C97001AD490 /* Coordinator.swift */; };
+		D1B99F0621EA4D70001AD490 /* UserTweetsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F0521EA4D70001AD490 /* UserTweetsCoordinator.swift */; };
+		D1B99F0821EA4D7F001AD490 /* UserTweetsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F0721EA4D7F001AD490 /* UserTweetsConfigurator.swift */; };
+		D1B99F0C21EA5129001AD490 /* UserSearchConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F0B21EA5129001AD490 /* UserSearchConfigurator.swift */; };
+		D1B99F0E21EA513B001AD490 /* UserSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F0D21EA513B001AD490 /* UserSearchPresenter.swift */; };
+		D1B99F1021EA5144001AD490 /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F0F21EA5144001AD490 /* UserSearchViewModel.swift */; };
+		D1B99F1321EA5154001AD490 /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F1121EA5154001AD490 /* UserSearchViewController.swift */; };
+		D1B99F1421EA5154001AD490 /* UserSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B99F1221EA5154001AD490 /* UserSearchViewController.xib */; };
+		D1B99F1621EA5299001AD490 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F1521EA5299001AD490 /* NibLoadable.swift */; };
+		D1B99F1821EA52BD001AD490 /* CoordinatorHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F1721EA52BD001AD490 /* CoordinatorHolderView.swift */; };
+		D1B99F1B21EA536D001AD490 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F1A21EA536D001AD490 /* UIColor+Extension.swift */; };
+		D1B99F1D21EA53B4001AD490 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F1C21EA53B4001AD490 /* UINavigationController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +33,23 @@
 		7F590BFFDF6E9984FA42E1E5 /* Pods_tweet_sentiment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tweet_sentiment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B99EE521EA36A2001AD490 /* tweet-sentiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tweet-sentiment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B99EE821EA36A2001AD490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D1B99EEA21EA36A2001AD490 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D1B99EED21EA36A2001AD490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1B99EEF21EA36A4001AD490 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1B99EF221EA36A4001AD490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1B99EF421EA36A4001AD490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1B99EFC21EA4BD9001AD490 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		D1B99EFE21EA4BE3001AD490 /* AppConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurator.swift; sourceTree = "<group>"; };
+		D1B99F0121EA4C97001AD490 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		D1B99F0521EA4D70001AD490 /* UserTweetsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTweetsCoordinator.swift; sourceTree = "<group>"; };
+		D1B99F0721EA4D7F001AD490 /* UserTweetsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTweetsConfigurator.swift; sourceTree = "<group>"; };
+		D1B99F0B21EA5129001AD490 /* UserSearchConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchConfigurator.swift; sourceTree = "<group>"; };
+		D1B99F0D21EA513B001AD490 /* UserSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchPresenter.swift; sourceTree = "<group>"; };
+		D1B99F0F21EA5144001AD490 /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
+		D1B99F1121EA5154001AD490 /* UserSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
+		D1B99F1221EA5154001AD490 /* UserSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSearchViewController.xib; sourceTree = "<group>"; };
+		D1B99F1521EA5299001AD490 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
+		D1B99F1721EA52BD001AD490 /* CoordinatorHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorHolderView.swift; sourceTree = "<group>"; };
+		D1B99F1A21EA536D001AD490 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		D1B99F1C21EA53B4001AD490 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,14 +93,82 @@
 		D1B99EE721EA36A2001AD490 /* tweet-sentiment */ = {
 			isa = PBXGroup;
 			children = (
-				D1B99EE821EA36A2001AD490 /* AppDelegate.swift */,
-				D1B99EEA21EA36A2001AD490 /* ViewController.swift */,
-				D1B99EEC21EA36A2001AD490 /* Main.storyboard */,
-				D1B99EEF21EA36A4001AD490 /* Assets.xcassets */,
-				D1B99EF121EA36A4001AD490 /* LaunchScreen.storyboard */,
-				D1B99EF421EA36A4001AD490 /* Info.plist */,
+				D1B99EFA21EA4B53001AD490 /* Common */,
+				D1B99EFB21EA4BBD001AD490 /* Presentation */,
 			);
 			path = "tweet-sentiment";
+			sourceTree = "<group>";
+		};
+		D1B99EFA21EA4B53001AD490 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D1B99EFE21EA4BE3001AD490 /* AppConfigurator.swift */,
+				D1B99EFC21EA4BD9001AD490 /* AppCoordinator.swift */,
+				D1B99EE821EA36A2001AD490 /* AppDelegate.swift */,
+				D1B99EEF21EA36A4001AD490 /* Assets.xcassets */,
+				D1B99EF421EA36A4001AD490 /* Info.plist */,
+				D1B99EF121EA36A4001AD490 /* LaunchScreen.storyboard */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D1B99EFB21EA4BBD001AD490 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				D1B99F0021EA4C8D001AD490 /* Utils */,
+				D1B99F0321EA4D29001AD490 /* Scenes */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		D1B99F0021EA4C8D001AD490 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D1B99F1921EA535F001AD490 /* Extensions */,
+				D1B99F0121EA4C97001AD490 /* Coordinator.swift */,
+				D1B99F1521EA5299001AD490 /* NibLoadable.swift */,
+				D1B99F1721EA52BD001AD490 /* CoordinatorHolderView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D1B99F0321EA4D29001AD490 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D1B99F0421EA4D49001AD490 /* UserTweets */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D1B99F0421EA4D49001AD490 /* UserTweets */ = {
+			isa = PBXGroup;
+			children = (
+				D1B99F0A21EA5057001AD490 /* UserSearch */,
+				D1B99F0521EA4D70001AD490 /* UserTweetsCoordinator.swift */,
+				D1B99F0721EA4D7F001AD490 /* UserTweetsConfigurator.swift */,
+			);
+			path = UserTweets;
+			sourceTree = "<group>";
+		};
+		D1B99F0A21EA5057001AD490 /* UserSearch */ = {
+			isa = PBXGroup;
+			children = (
+				D1B99F0B21EA5129001AD490 /* UserSearchConfigurator.swift */,
+				D1B99F0D21EA513B001AD490 /* UserSearchPresenter.swift */,
+				D1B99F0F21EA5144001AD490 /* UserSearchViewModel.swift */,
+				D1B99F1121EA5154001AD490 /* UserSearchViewController.swift */,
+				D1B99F1221EA5154001AD490 /* UserSearchViewController.xib */,
+			);
+			path = UserSearch;
+			sourceTree = "<group>";
+		};
+		D1B99F1921EA535F001AD490 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D1B99F1A21EA536D001AD490 /* UIColor+Extension.swift */,
+				D1B99F1C21EA53B4001AD490 /* UINavigationController+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		DF7A3E83149EBFA773430D82 /* Pods */ = {
@@ -100,6 +192,7 @@
 				D1B99EE221EA36A2001AD490 /* Frameworks */,
 				D1B99EE321EA36A2001AD490 /* Resources */,
 				526523ED3954042216D934BF /* [CP] Embed Pods Frameworks */,
+				D1B99F0921EA4F75001AD490 /* Run Script (SwiftLint) */,
 			);
 			buildRules = (
 			);
@@ -148,9 +241,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1B99F1421EA5154001AD490 /* UserSearchViewController.xib in Resources */,
 				D1B99EF321EA36A4001AD490 /* LaunchScreen.storyboard in Resources */,
 				D1B99EF021EA36A4001AD490 /* Assets.xcassets in Resources */,
-				D1B99EEE21EA36A2001AD490 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +288,24 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tweet-sentiment/Pods-tweet-sentiment-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D1B99F0921EA4F75001AD490 /* Run Script (SwiftLint) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (SwiftLint)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		E8511DF86B87F38389F9F8D4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,22 +335,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1B99EEB21EA36A2001AD490 /* ViewController.swift in Sources */,
+				D1B99F0221EA4C97001AD490 /* Coordinator.swift in Sources */,
+				D1B99F0E21EA513B001AD490 /* UserSearchPresenter.swift in Sources */,
+				D1B99EFD21EA4BD9001AD490 /* AppCoordinator.swift in Sources */,
+				D1B99F0621EA4D70001AD490 /* UserTweetsCoordinator.swift in Sources */,
 				D1B99EE921EA36A2001AD490 /* AppDelegate.swift in Sources */,
+				D1B99F1621EA5299001AD490 /* NibLoadable.swift in Sources */,
+				D1B99F1B21EA536D001AD490 /* UIColor+Extension.swift in Sources */,
+				D1B99EFF21EA4BE3001AD490 /* AppConfigurator.swift in Sources */,
+				D1B99F1821EA52BD001AD490 /* CoordinatorHolderView.swift in Sources */,
+				D1B99F0821EA4D7F001AD490 /* UserTweetsConfigurator.swift in Sources */,
+				D1B99F0C21EA5129001AD490 /* UserSearchConfigurator.swift in Sources */,
+				D1B99F1D21EA53B4001AD490 /* UINavigationController+Extension.swift in Sources */,
+				D1B99F1021EA5144001AD490 /* UserSearchViewModel.swift in Sources */,
+				D1B99F1321EA5154001AD490 /* UserSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D1B99EEC21EA36A2001AD490 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D1B99EED21EA36A2001AD490 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D1B99EF121EA36A4001AD490 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -374,7 +489,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UCP4PUH258;
-				INFOPLIST_FILE = "tweet-sentiment/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/tweet-sentiment/Common/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -393,7 +509,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UCP4PUH258;
-				INFOPLIST_FILE = "tweet-sentiment/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/tweet-sentiment/Common/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

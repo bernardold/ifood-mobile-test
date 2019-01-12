@@ -1,0 +1,6 @@
+framework module Pods_tweet_sentiment {
+  umbrella header "Pods-tweet-sentiment-umbrella.h"
+
+  export *
+  module * { export * }
+}

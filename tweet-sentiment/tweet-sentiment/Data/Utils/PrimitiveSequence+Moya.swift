@@ -36,6 +36,7 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
                 let successfulResponse = try response.filterSuccessfulStatusCodes()
                 return Single.just(successfulResponse)
             } catch {
+                // TODO: Map APIs status codes to DomainError
                 return Single.error(DomainError.underlying)
             }
         }

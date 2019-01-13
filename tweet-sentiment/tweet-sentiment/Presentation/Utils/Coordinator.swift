@@ -31,4 +31,5 @@ extension Coordinator {
 
 enum CoordinatorScenes {
     case userSearch
+    case tweets(user: UserSearchViewModel.User?)
 }

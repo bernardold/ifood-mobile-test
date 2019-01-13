@@ -12,6 +12,7 @@ import Swinject
 func buildUserTweetsContainer(withParent parent: Container, andCoordinator coordinator: Coordinator) -> Container {
     let container = Container(parent: parent)
     container.setupUserSearchScene()
+    container.setupTweetsScene()
     container.register(Coordinator.self) { _ in coordinator}
     return container
 }

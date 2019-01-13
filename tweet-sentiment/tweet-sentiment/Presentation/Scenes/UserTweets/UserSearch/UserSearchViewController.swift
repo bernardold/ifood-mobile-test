@@ -25,7 +25,7 @@ class UserSearchViewController: UIViewController {
     let disposeBag = DisposeBag()
 
     var searchUser = PublishSubject<String>()
-    var resultSelected = PublishSubject<String>()
+    var resultSelected = PublishSubject<UserSearchViewModel.User?>()
 
     var searchResult: UserSearchViewModel.User?
     var resultGestureRecognizer: UITapGestureRecognizer!
@@ -76,7 +76,7 @@ extension UserSearchViewController {
                     })
                 })
             })
-            .map { [weak self] _ in return self?.searchResult?.userId ?? "" }
+            .map { [weak self] _ in return self?.searchResult }
             .bind(to: resultSelected)
             .disposed(by: disposeBag)
     }

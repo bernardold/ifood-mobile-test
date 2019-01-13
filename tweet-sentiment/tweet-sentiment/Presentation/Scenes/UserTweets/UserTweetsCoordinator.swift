@@ -8,6 +8,7 @@
 
 import Foundation
 import Swinject
+import RxSwift
 
 class UserTweetsCoordinator: Coordinator {
     var children = [WeakChild]()
@@ -29,11 +30,29 @@ class UserTweetsCoordinator: Coordinator {
         viewController.navigationItem.backBarButtonItem = backButton
         navigationController?.pushViewController(viewController, animated: true)
         navigationController?.setToDefault()
+
+        viewController.resultSelected
+            .subscribe(onNext: { [weak self] user in
+                self?.navigate(to: .tweets(user: user))
+            })
+            .disposed(by: viewController.disposeBag)
     }
 }
 
 extension UserTweetsCoordinator {
     func navigate(to scene: CoordinatorScenes) {
+        switch scene {
+        case .userSearch:
+            navigationController?.popToRootViewController(animated: true)
+        case .tweets(let user):
+            navigateToTweetList(user: user)
+        }
+    }
 
+    private func navigateToTweetList(user: UserSearchViewModel.User?) {
+        let viewController = self.container.resolve(TweetsViewController.self)!
+        viewController.selectedUser = user
+        viewController.navigationItem.title = user?.handle ?? ""
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

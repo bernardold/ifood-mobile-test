@@ -39,5 +39,6 @@ extension Container {
         autoregister(TwitterDataRepository.self, initializer: TwitterRepository.init)
         // Use Cases
         autoregister(SearchUserUseCase.self, initializer: SearchUserUseCase.init)
+        autoregister(GetTweetsUseCase.self, initializer: GetTweetsUseCase.init)
     }
 }

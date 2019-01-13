@@ -28,4 +28,10 @@ class TwitterRemoteDataSource {
             .mapError()
             .map(TwitterUserRemoteModel.self)
     }
+
+    func getTweets(handle: String, maxId: String?, authorization: String) -> Single <[TweetRemoteModel]> {
+        return provider.rx.request(.getTweets(userHandle: handle, maxId: maxId, authorization: authorization))
+            .mapError()
+            .map([TweetRemoteModel].self)
+    }
 }

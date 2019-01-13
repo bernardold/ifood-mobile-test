@@ -43,7 +43,6 @@ extension TweetsViewController {
 
 extension TweetsViewController: TweetsView {
     func displayTweets() {
-        
     }
 }
 

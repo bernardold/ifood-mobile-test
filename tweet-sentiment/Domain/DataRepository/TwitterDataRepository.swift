@@ -12,4 +12,5 @@ import RxSwift
 public protocol TwitterDataRepository {
     func getBearerToken() -> Single<BearerToken>
     func searchUser(handle: String) -> Single<TwitterUser>
+    func getTweets(handle: String, maxId: String?) -> Single<[Tweet]>
 }

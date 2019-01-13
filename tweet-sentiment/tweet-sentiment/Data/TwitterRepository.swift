@@ -30,4 +30,12 @@ struct TwitterRepository: TwitterDataRepository {
                     .map({ $0.toDomainModel() })
             }
     }
+
+    func getTweets(handle: String, maxId: String?) -> Single<[Tweet]> {
+        return self.getBearerToken()
+            .flatMap { bearerToken in
+                return self.twitterRemoteDataSource.getTweets(handle: handle, maxId: maxId, authorization: bearerToken.value)
+                    .map({ $0.toDomainModel() })
+        }
+    }
 }

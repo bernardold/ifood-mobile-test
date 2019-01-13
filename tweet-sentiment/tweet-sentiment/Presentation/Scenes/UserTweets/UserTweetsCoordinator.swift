@@ -24,7 +24,7 @@ class UserTweetsCoordinator: Coordinator {
 
     func start() {
         let viewController = container.resolve(UserSearchViewController.self)!
-        viewController.navigationItem.title = "Search Twitter User"
+        viewController.navigationItem.title = "Find Twitter User"
         let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         viewController.navigationItem.backBarButtonItem = backButton
         navigationController?.pushViewController(viewController, animated: true)

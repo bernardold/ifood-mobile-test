@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Domain
 import Moya
 import Swinject
 import SwinjectAutoregistration
@@ -14,6 +15,8 @@ import SwinjectAutoregistration
 func buildAppContainer() -> Container {
     let container = Container()
     container.setupCoordinators()
+    container.setupNetwork()
+    container.setupDomain()
     return container
 }
 
@@ -22,5 +25,19 @@ extension Container {
         register(UserTweetsCoordinator.self) { (_, navigation) -> UserTweetsCoordinator in
             UserTweetsCoordinator(navigationController: navigation, parentContainer: self)
         }
+    }
+
+    func setupNetwork() {
+        register(MoyaProvider<ServiceProvider>.self, factory: {_ in
+            MoyaProvider<ServiceProvider>(plugins: [NetworkLoggerPlugin(verbose: true)])
+        })
+        autoregister(TwitterRepository.self, initializer: TwitterRepository.init)
+        autoregister(TwitterRemoteDataSource.self, initializer: TwitterRemoteDataSource.init)
+    }
+
+    func setupDomain() {
+        autoregister(TwitterDataRepository.self, initializer: TwitterRepository.init)
+        // Use Cases
+        autoregister(SearchUserUseCase.self, initializer: SearchUserUseCase.init)
     }
 }

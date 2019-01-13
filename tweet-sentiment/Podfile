@@ -14,7 +14,7 @@ target 'tweet-sentiment' do
   pod 'Swinject', '2.5.0'
   pod 'SwinjectAutoregistration', '2.5.0'
   
-  #target 'Domain' do
-  #  pod 'RxSwift', '~> 4.0'
-  #end
+  target 'Domain' do
+    pod 'RxSwift', '~> 4.0'
+  end
 end

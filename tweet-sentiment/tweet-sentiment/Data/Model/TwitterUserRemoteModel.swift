@@ -16,7 +16,7 @@ struct TwitterUserRemoteModel: Decodable {
     let description: String
     let verified: Bool
     let profileImageURL: String
-    let bannerImageURL: String
+    let bannerImageURL: String?
 
     enum CodingKeys: String, CodingKey {
         case userId = "id_str"
@@ -24,7 +24,7 @@ struct TwitterUserRemoteModel: Decodable {
         case screenName = "screen_name"
         case description = "description"
         case verified = "verified"
-        case profileImageURL = "profile_image_url"
+        case profileImageURL = "profile_image_url_https"
         case bannerImageURL = "profile_banner_url"
     }
 }
@@ -36,7 +36,7 @@ extension TwitterUserRemoteModel {
                            handle: screenName,
                            description: description,
                            verified: verified,
-                           profileImage: URL(string: profileImageURL),
-                           bannerImage: URL(string: bannerImageURL))
+                           profileImage: URL(string: profileImageURL.replacingOccurrences(of: "_normal", with: "_bigger")),
+                           bannerImage: URL(string: bannerImageURL ?? ""))
     }
 }

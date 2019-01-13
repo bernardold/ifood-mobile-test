@@ -7,6 +7,24 @@
 //
 
 import Foundation
+import Domain
 
-struct UsearchSearch {
+struct UserSearchViewModel {
+    struct User {
+        let userId: String
+        let name: String
+        let handle: String
+        let isVerified: Bool
+        let profileImage: URL?
+    }
+}
+
+extension Domain.TwitterUser {
+    func toViewModel() -> UserSearchViewModel.User {
+        return UserSearchViewModel.User(userId: userId,
+                                        name: name,
+                                        handle: "@\(handle)",
+                                        isVerified: verified,
+                                        profileImage: profileImage)
+    }
 }

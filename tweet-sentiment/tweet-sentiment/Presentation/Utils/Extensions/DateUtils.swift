@@ -1,5 +1,5 @@
 //
-//  String+Extension.swift
+//  DateUtils.swift
 //  tweet-sentiment
 //
 //  Created by Bernardo Duarte on 13/01/19.
@@ -20,5 +20,14 @@ extension DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E MMM d HH:mm:ss Z yyyy"
         return dateFormatter
+    }
+}
+
+extension Date {
+    var dayMonthYear: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let date = dateFormatter.string(from: self)
+        return date
     }
 }

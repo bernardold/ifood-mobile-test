@@ -48,8 +48,10 @@
 		D1B99F5921EB6C04001AD490 /* TweetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F5821EB6C04001AD490 /* TweetsViewModel.swift */; };
 		D1B99F5B21EBE24B001AD490 /* TweetRemoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F5A21EBE24B001AD490 /* TweetRemoteModel.swift */; };
 		D1B99F5D21EBE516001AD490 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F5C21EBE516001AD490 /* Tweet.swift */; };
-		D1B99F5F21EBE77D001AD490 /* String+DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F5E21EBE77D001AD490 /* String+DateFormatter+Extension.swift */; };
+		D1B99F5F21EBE77D001AD490 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F5E21EBE77D001AD490 /* DateUtils.swift */; };
 		D1B99F6121EBEB3B001AD490 /* GetTweetsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F6021EBEB3B001AD490 /* GetTweetsUseCase.swift */; };
+		D1B99F6521EBFD15001AD490 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F6321EBFD15001AD490 /* TweetTableViewCell.swift */; };
+		D1B99F6621EBFD15001AD490 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B99F6421EBFD15001AD490 /* TweetTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,8 +125,10 @@
 		D1B99F5821EB6C04001AD490 /* TweetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsViewModel.swift; sourceTree = "<group>"; };
 		D1B99F5A21EBE24B001AD490 /* TweetRemoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetRemoteModel.swift; sourceTree = "<group>"; };
 		D1B99F5C21EBE516001AD490 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
-		D1B99F5E21EBE77D001AD490 /* String+DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		D1B99F5E21EBE77D001AD490 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		D1B99F6021EBEB3B001AD490 /* GetTweetsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTweetsUseCase.swift; sourceTree = "<group>"; };
+		D1B99F6321EBFD15001AD490 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
+		D1B99F6421EBFD15001AD490 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
 		FD11FDC6A89D46D47477D064 /* Pods-tweet-sentiment-Domain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tweet-sentiment-Domain.release.xcconfig"; path = "Pods/Target Support Files/Pods-tweet-sentiment-Domain/Pods-tweet-sentiment-Domain.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,7 +261,7 @@
 			children = (
 				D1B99F1A21EA536D001AD490 /* UIColor+Extension.swift */,
 				D1B99F1C21EA53B4001AD490 /* UINavigationController+Extension.swift */,
-				D1B99F5E21EBE77D001AD490 /* String+DateFormatter+Extension.swift */,
+				D1B99F5E21EBE77D001AD490 /* DateUtils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -344,6 +348,7 @@
 		D1B99F4F21EB6BC8001AD490 /* Tweets */ = {
 			isa = PBXGroup;
 			children = (
+				D1B99F6221EBFCE9001AD490 /* Cell */,
 				D1B99F5621EB6BF7001AD490 /* TweetsConfigurator.swift */,
 				D1B99F5421EB6BEB001AD490 /* TweetsPresenter.swift */,
 				D1B99F5821EB6C04001AD490 /* TweetsViewModel.swift */,
@@ -351,6 +356,15 @@
 				D1B99F5121EB6BDE001AD490 /* TweetsViewController.xib */,
 			);
 			path = Tweets;
+			sourceTree = "<group>";
+		};
+		D1B99F6221EBFCE9001AD490 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D1B99F6321EBFD15001AD490 /* TweetTableViewCell.swift */,
+				D1B99F6421EBFD15001AD490 /* TweetTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		DF7A3E83149EBFA773430D82 /* Pods */ = {
@@ -462,6 +476,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1B99F6621EBFD15001AD490 /* TweetTableViewCell.xib in Resources */,
 				D1B99F5321EB6BDF001AD490 /* TweetsViewController.xib in Resources */,
 				D1B99F1421EA5154001AD490 /* UserSearchViewController.xib in Resources */,
 				D1B99EF321EA36A4001AD490 /* LaunchScreen.storyboard in Resources */,
@@ -588,11 +603,12 @@
 			files = (
 				D1B99F5921EB6C04001AD490 /* TweetsViewModel.swift in Sources */,
 				D1B99F5B21EBE24B001AD490 /* TweetRemoteModel.swift in Sources */,
+				D1B99F6521EBFD15001AD490 /* TweetTableViewCell.swift in Sources */,
 				D1B99F2921EA7C1E001AD490 /* BearerTokenRemoteModel.swift in Sources */,
 				D1B99F0221EA4C97001AD490 /* Coordinator.swift in Sources */,
 				D1B99F0E21EA513B001AD490 /* UserSearchPresenter.swift in Sources */,
 				D1B99F2321EA7B84001AD490 /* TwitterRemoteDataSource.swift in Sources */,
-				D1B99F5F21EBE77D001AD490 /* String+DateFormatter+Extension.swift in Sources */,
+				D1B99F5F21EBE77D001AD490 /* DateUtils.swift in Sources */,
 				D1B99F5521EB6BEB001AD490 /* TweetsPresenter.swift in Sources */,
 				D1B99EFD21EA4BD9001AD490 /* AppCoordinator.swift in Sources */,
 				D1B99F5721EB6BF7001AD490 /* TweetsConfigurator.swift in Sources */,

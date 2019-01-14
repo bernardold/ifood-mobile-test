@@ -67,15 +67,6 @@ extension UserSearchViewController {
             .disposed(by: disposeBag)
 
         resultGestureRecognizer.rx.event.asObservable()
-            .do(onNext: { [weak self] _ in
-                UIView.animate(withDuration: 0.2, animations: {
-                    self?.resultView.backgroundColor = .ligher
-                }, completion: { _ in
-                    UIView.animate(withDuration: 0.2, animations: {
-                        self?.resultView.backgroundColor = .white
-                    })
-                })
-            })
             .map { [weak self] _ in return self?.searchResult }
             .bind(to: resultSelected)
             .disposed(by: disposeBag)

@@ -54,7 +54,7 @@ extension ServiceProvider: TargetType {
         case .searchUsers(let handle, _):
             return .requestParameters(parameters: ["screen_name": handle], encoding: URLEncoding.queryString)
         case .getTweets(let handle, let max, _):
-            var parameters: [String: Any] = ["screen_name": handle, "count": 20, "include_rts": 1]
+            var parameters: [String: Any] = ["screen_name": handle, "count": 25, "include_rts": 1]
             if let maxId = max {
                 parameters["max_id"] = maxId
             }

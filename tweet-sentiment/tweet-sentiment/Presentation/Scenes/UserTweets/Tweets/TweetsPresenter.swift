@@ -21,9 +21,11 @@ extension TweetsPresenter {
     func askForTweets(fromUserHandle handle: String, lastTweetId: String? = nil) {
         let request = GetTweetsUseCase.Request(handle: handle, oldestTweetId: lastTweetId)
         getTweetsUseCase.getSingle(request: request)
+            .map({ $0.toViewModel() })
             .subscribe(onSuccess: { tweets in
-                print(tweets)
+                self.view?.displayTweets(tweets, done: (tweets.count < 25))
             }, onError: { error in
+                // TODO: handle Errors
                 print(error)
             })
             .disposed(by: disposeBag)

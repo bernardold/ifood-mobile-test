@@ -30,7 +30,6 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
             default: return Single.error(DomainError.underlying)
             }
         })
-        // Moya treats 400...500 status code as successful
         .flatMap { response in
             do {
                 let successfulResponse = try response.filterSuccessfulStatusCodes()

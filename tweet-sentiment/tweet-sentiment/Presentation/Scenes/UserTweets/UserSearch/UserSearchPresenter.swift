@@ -26,8 +26,8 @@ extension UserSearchPresenter {
                 self.view?.displayFoundUser(twitterUser: user)
             }, onError: { error in
                 self.view?.stopLoading()
-                // TODO: handle errors
-                print(error)
+                guard let domainError = error as? DomainError else { return }
+                self.view?.displayError(error: domainError.toViewModel())
             }, onSubscribe: {
                 self.view?.startLoading()
             })

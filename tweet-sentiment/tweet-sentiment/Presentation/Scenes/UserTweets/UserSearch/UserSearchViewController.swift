@@ -13,6 +13,7 @@ import Kingfisher
 
 protocol UserSearchView: CoordinatorHolderView {
     func displayFoundUser(twitterUser: UserSearchViewModel.User)
+    func displayError(error: UserSearchViewModel.Error)
     func startLoading()
     func stopLoading()
 }
@@ -30,11 +31,16 @@ class UserSearchViewController: UIViewController {
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var searchButton: UIButton!
     @IBOutlet var loadingView: UIView!
+
     @IBOutlet var resultView: UIView!
     @IBOutlet var userImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var verifyView: UIView!
     @IBOutlet var handleLabel: UILabel!
+
+    @IBOutlet var errorView: UIView!
+    @IBOutlet var errorTitleLabel: UILabel!
+    @IBOutlet var errorMessageLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +54,7 @@ extension UserSearchViewController {
         usernameTextField.delegate = self
         loadingView.isHidden = true
         resultView.isHidden = true
+        errorView.isHidden = true
 
         resultView.layer.borderColor = UIColor.primary.cgColor
         resultView.layer.borderWidth = 2.0
@@ -60,6 +67,7 @@ extension UserSearchViewController {
     fileprivate func setupObservables() {
         searchButton.rx.tap.asObservable()
             .map { [weak self] _ in return (self?.usernameTextField.text ?? "") }
+            .filter({ !$0.isEmpty })
             .subscribe(onNext: { [weak self] username in
                 self?.presenter.askForTwitterUser(withHandle: username)
             })
@@ -82,11 +90,18 @@ extension UserSearchViewController: UserSearchView {
         resultView.isHidden = false
     }
 
+    func displayError(error: UserSearchViewModel.Error) {
+        errorTitleLabel.text = error.title ?? ""
+        errorMessageLabel.text = error.message ?? ""
+        errorView.isHidden = false
+    }
+
     func startLoading() {
         usernameTextField.isEnabled = false
         searchButton.isHidden = true
         loadingView.isHidden = false
         resultView.isHidden = true
+        errorView.isHidden = true
     }
 
     func stopLoading() {

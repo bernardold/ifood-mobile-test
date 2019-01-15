@@ -26,8 +26,8 @@ extension TweetsPresenter {
             .subscribe(onSuccess: { tweets in
                 self.view?.displayTweets(tweets, done: (tweets.count < 25))
             }, onError: { error in
-                // TODO: handle Errors
-                print(error)
+                guard let domainError = error as? DomainError else { return }
+                self.view?.displayError(error: domainError.toTweetsViewModel())
             })
             .disposed(by: disposeBag)
     }
@@ -39,8 +39,8 @@ extension TweetsPresenter {
             .subscribe(onSuccess: { sentiment in
                 self.view?.displaySentiment(forTweetId: tweet.tweetId, sentiment: sentiment)
             }, onError: { error in
-                // TODO: handle Errors
-                print(error)
+                guard let domainError = error as? DomainError else { return }
+                self.view?.displayError(error: domainError.toTweetsViewModel())
             })
             .disposed(by: disposeBag)
     }

@@ -35,7 +35,7 @@ extension Domain.TwitterUser {
 }
 
 extension DomainError {
-    func toViewModel() -> UserSearchViewModel.Error {
+    func toUserSearchViewModel() -> UserSearchViewModel.Error {
         switch self {
         case .notFound:
             return UserSearchViewModel.Error(title: "User not found", message: "Try another Twitter username.")

@@ -30,6 +30,11 @@ struct TweetsViewModel {
         case neutral
         case sad
     }
+
+    struct Error {
+        let title: String?
+        let message: String?
+    }
 }
 
 extension TweetsViewModel.TweetSentiment {
@@ -69,6 +74,21 @@ extension Domain.SentimentAnalysis {
         case (-1.0)..<(-0.25): return .sad
         case (0.25)...(1.0): return .happy
         default: return .neutral
+        }
+    }
+}
+
+extension DomainError {
+    func toTweetsViewModel() -> TweetsViewModel.Error {
+        switch self {
+        case .notFound:
+            return TweetsViewModel.Error(title: "No tweet", message: "This user has no tweets to be analyzed. Please another one.")
+        case .notConnectedToInternet:
+            return TweetsViewModel.Error(title: "Connection problem", message: "Check your Internet connection and try again.")
+        case .authorizationError, .badRequest:
+            return TweetsViewModel.Error(title: "Request problem", message: "Something went wrong with your request.")
+        case .serverError, .underlying:
+            return TweetsViewModel.Error(title: "Ohh, noo..", message: "A problem occured. Please try again later.")
         }
     }
 }

@@ -27,7 +27,7 @@ extension UserSearchPresenter {
             }, onError: { error in
                 self.view?.stopLoading()
                 guard let domainError = error as? DomainError else { return }
-                self.view?.displayError(error: domainError.toViewModel())
+                self.view?.displayError(error: domainError.toUserSearchViewModel())
             }, onSubscribe: {
                 self.view?.startLoading()
             })

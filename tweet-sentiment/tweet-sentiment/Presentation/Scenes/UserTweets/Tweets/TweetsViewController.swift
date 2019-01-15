@@ -12,6 +12,7 @@ import RxSwift
 protocol TweetsView: CoordinatorHolderView {
     func displayTweets(_ tweets: [TweetsViewModel.Tweet], done: Bool)
     func displaySentiment(forTweetId tweetId: String, sentiment: TweetsViewModel.TweetSentiment)
+    func displayError(error: TweetsViewModel.Error)
 }
 
 class TweetsViewController: UIViewController {
@@ -107,6 +108,17 @@ extension TweetsViewController: TweetsView {
         guard let index = dataSource.firstIndex(where: { tweet in return tweet.tweetId == tweetId }) else { return }
         dataSource[index].sentiment = sentiment
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    }
+
+    func displayError(error: TweetsViewModel.Error) {
+        let alertController = UIAlertController(title: error.title, message: error.message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            guard self.dataSource.isEmpty else { return }
+            self.coordinator?.pop()
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
 

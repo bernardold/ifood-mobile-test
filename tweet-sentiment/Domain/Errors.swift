@@ -11,5 +11,9 @@ import Foundation
 public enum DomainError: Error {
     case underlying
     case notConnectedToInternet
-    // TODO: add APIs errors
+
+    case notFound
+    case badRequest
+    case authorizationError
+    case serverError
 }

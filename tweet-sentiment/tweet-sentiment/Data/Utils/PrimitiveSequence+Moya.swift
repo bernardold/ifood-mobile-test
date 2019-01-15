@@ -36,8 +36,20 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
                 let successfulResponse = try response.filterSuccessfulStatusCodes()
                 return Single.just(successfulResponse)
             } catch {
-                // TODO: Map APIs status codes to DomainError
-                return Single.error(DomainError.underlying)
+                // https://cloud.google.com/storage/docs/json_api/v1/status-codes
+                // https://developer.twitter.com/en/docs/basics/response-codes
+                switch response.statusCode {
+                case 400, 406:
+                    return Single.error(DomainError.badRequest)
+                case 401, 403:
+                    return Single.error(DomainError.authorizationError)
+                case 404:
+                    return Single.error(DomainError.notFound)
+                case 500 ... 504:
+                    return Single.error(DomainError.serverError)
+                default:
+                    return Single.error(DomainError.underlying)
+                }
             }
         }
     }

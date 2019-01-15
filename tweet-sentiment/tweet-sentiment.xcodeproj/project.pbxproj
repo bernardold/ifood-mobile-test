@@ -52,6 +52,13 @@
 		D1B99F6121EBEB3B001AD490 /* GetTweetsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F6021EBEB3B001AD490 /* GetTweetsUseCase.swift */; };
 		D1B99F6521EBFD15001AD490 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B99F6321EBFD15001AD490 /* TweetTableViewCell.swift */; };
 		D1B99F6621EBFD15001AD490 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B99F6421EBFD15001AD490 /* TweetTableViewCell.xib */; };
+		D1BCA02421ED389800862C4B /* GoogleDocumentRemoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BCA02321ED389800862C4B /* GoogleDocumentRemoteModel.swift */; };
+		D1BCA02621ED3A6400862C4B /* SentimentAnalysisRemoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BCA02521ED3A6400862C4B /* SentimentAnalysisRemoteModel.swift */; };
+		D1BCA02821ED3E5700862C4B /* GoogleCloudRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BCA02721ED3E5700862C4B /* GoogleCloudRemoteDataSource.swift */; };
+		D1BCA02A21ED3EF600862C4B /* GoogleCloudRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BCA02921ED3EF600862C4B /* GoogleCloudRepository.swift */; };
+		D1BCA02C21ED3F9A00862C4B /* GoogleCloudDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BCA02B21ED3F9A00862C4B /* GoogleCloudDataRepository.swift */; };
+		D1BCA02E21ED3FCF00862C4B /* SentimentAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BCA02D21ED3FCF00862C4B /* SentimentAnalysis.swift */; };
+		D1BCA03021ED427300862C4B /* AnalyzeTweetSentimentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BCA02F21ED427300862C4B /* AnalyzeTweetSentimentUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +136,13 @@
 		D1B99F6021EBEB3B001AD490 /* GetTweetsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTweetsUseCase.swift; sourceTree = "<group>"; };
 		D1B99F6321EBFD15001AD490 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		D1B99F6421EBFD15001AD490 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
+		D1BCA02321ED389800862C4B /* GoogleDocumentRemoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDocumentRemoteModel.swift; sourceTree = "<group>"; };
+		D1BCA02521ED3A6400862C4B /* SentimentAnalysisRemoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentAnalysisRemoteModel.swift; sourceTree = "<group>"; };
+		D1BCA02721ED3E5700862C4B /* GoogleCloudRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCloudRemoteDataSource.swift; sourceTree = "<group>"; };
+		D1BCA02921ED3EF600862C4B /* GoogleCloudRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCloudRepository.swift; sourceTree = "<group>"; };
+		D1BCA02B21ED3F9A00862C4B /* GoogleCloudDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCloudDataRepository.swift; sourceTree = "<group>"; };
+		D1BCA02D21ED3FCF00862C4B /* SentimentAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentAnalysis.swift; sourceTree = "<group>"; };
+		D1BCA02F21ED427300862C4B /* AnalyzeTweetSentimentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeTweetSentimentUseCase.swift; sourceTree = "<group>"; };
 		FD11FDC6A89D46D47477D064 /* Pods-tweet-sentiment-Domain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tweet-sentiment-Domain.release.xcconfig"; path = "Pods/Target Support Files/Pods-tweet-sentiment-Domain/Pods-tweet-sentiment-Domain.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -273,6 +287,7 @@
 				D1B99F2721EA7C14001AD490 /* Model */,
 				D1B99F1F21EA5F2E001AD490 /* Remote */,
 				D1B99F4421EA8447001AD490 /* TwitterRepository.swift */,
+				D1BCA02921ED3EF600862C4B /* GoogleCloudRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -280,6 +295,7 @@
 		D1B99F1F21EA5F2E001AD490 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				D1BCA02721ED3E5700862C4B /* GoogleCloudRemoteDataSource.swift */,
 				D1B99F2021EA5F45001AD490 /* ServiceProvider.swift */,
 				D1B99F2221EA7B84001AD490 /* TwitterRemoteDataSource.swift */,
 			);
@@ -298,8 +314,10 @@
 			isa = PBXGroup;
 			children = (
 				D1B99F2821EA7C1E001AD490 /* BearerTokenRemoteModel.swift */,
-				D1B99F4821EA8AF8001AD490 /* TwitterUserRemoteModel.swift */,
+				D1BCA02321ED389800862C4B /* GoogleDocumentRemoteModel.swift */,
+				D1BCA02521ED3A6400862C4B /* SentimentAnalysisRemoteModel.swift */,
 				D1B99F5A21EBE24B001AD490 /* TweetRemoteModel.swift */,
+				D1B99F4821EA8AF8001AD490 /* TwitterUserRemoteModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,8 +339,9 @@
 			isa = PBXGroup;
 			children = (
 				D1B99F3F21EA81E1001AD490 /* BearerToken.swift */,
-				D1B99F4621EA875A001AD490 /* TwitterUser.swift */,
+				D1BCA02D21ED3FCF00862C4B /* SentimentAnalysis.swift */,
 				D1B99F5C21EBE516001AD490 /* Tweet.swift */,
+				D1B99F4621EA875A001AD490 /* TwitterUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,6 +349,7 @@
 		D1B99F4121EA8348001AD490 /* DataRepository */ = {
 			isa = PBXGroup;
 			children = (
+				D1BCA02B21ED3F9A00862C4B /* GoogleCloudDataRepository.swift */,
 				D1B99F4221EA8361001AD490 /* TwitterDataRepository.swift */,
 			);
 			path = DataRepository;
@@ -339,8 +359,9 @@
 			isa = PBXGroup;
 			children = (
 				D1B99F4D21EA93B1001AD490 /* UseCase.swift */,
-				D1B99F4B21EA93A3001AD490 /* SearchUserUseCase.swift */,
+				D1BCA02F21ED427300862C4B /* AnalyzeTweetSentimentUseCase.swift */,
 				D1B99F6021EBEB3B001AD490 /* GetTweetsUseCase.swift */,
+				D1B99F4B21EA93A3001AD490 /* SearchUserUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -607,15 +628,18 @@
 				D1B99F2921EA7C1E001AD490 /* BearerTokenRemoteModel.swift in Sources */,
 				D1B99F0221EA4C97001AD490 /* Coordinator.swift in Sources */,
 				D1B99F0E21EA513B001AD490 /* UserSearchPresenter.swift in Sources */,
+				D1BCA02A21ED3EF600862C4B /* GoogleCloudRepository.swift in Sources */,
 				D1B99F2321EA7B84001AD490 /* TwitterRemoteDataSource.swift in Sources */,
 				D1B99F5F21EBE77D001AD490 /* DateUtils.swift in Sources */,
 				D1B99F5521EB6BEB001AD490 /* TweetsPresenter.swift in Sources */,
 				D1B99EFD21EA4BD9001AD490 /* AppCoordinator.swift in Sources */,
 				D1B99F5721EB6BF7001AD490 /* TweetsConfigurator.swift in Sources */,
 				D1B99F0621EA4D70001AD490 /* UserTweetsCoordinator.swift in Sources */,
+				D1BCA02621ED3A6400862C4B /* SentimentAnalysisRemoteModel.swift in Sources */,
 				D1B99EE921EA36A2001AD490 /* AppDelegate.swift in Sources */,
 				D1B99F1621EA5299001AD490 /* NibLoadable.swift in Sources */,
 				D1B99F2121EA5F45001AD490 /* ServiceProvider.swift in Sources */,
+				D1BCA02421ED389800862C4B /* GoogleDocumentRemoteModel.swift in Sources */,
 				D1B99F1B21EA536D001AD490 /* UIColor+Extension.swift in Sources */,
 				D1B99EFF21EA4BE3001AD490 /* AppConfigurator.swift in Sources */,
 				D1B99F5221EB6BDF001AD490 /* TweetsViewController.swift in Sources */,
@@ -628,6 +652,7 @@
 				D1B99F1021EA5144001AD490 /* UserSearchViewModel.swift in Sources */,
 				D1B99F2621EA7BB8001AD490 /* PrimitiveSequence+Moya.swift in Sources */,
 				D1B99F1321EA5154001AD490 /* UserSearchViewController.swift in Sources */,
+				D1BCA02821ED3E5700862C4B /* GoogleCloudRemoteDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,7 +663,10 @@
 				D1B99F4021EA81E1001AD490 /* BearerToken.swift in Sources */,
 				D1B99F4C21EA93A3001AD490 /* SearchUserUseCase.swift in Sources */,
 				D1B99F3D21EA7F6C001AD490 /* Errors.swift in Sources */,
+				D1BCA02E21ED3FCF00862C4B /* SentimentAnalysis.swift in Sources */,
 				D1B99F5D21EBE516001AD490 /* Tweet.swift in Sources */,
+				D1BCA03021ED427300862C4B /* AnalyzeTweetSentimentUseCase.swift in Sources */,
+				D1BCA02C21ED3F9A00862C4B /* GoogleCloudDataRepository.swift in Sources */,
 				D1B99F4E21EA93B1001AD490 /* UseCase.swift in Sources */,
 				D1B99F4721EA875A001AD490 /* TwitterUser.swift in Sources */,
 				D1B99F6121EBEB3B001AD490 /* GetTweetsUseCase.swift in Sources */,

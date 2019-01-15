@@ -13,8 +13,10 @@ enum ServiceProvider {
     case getBearerToken
     case searchUsers(handle: String, authorization: String)
     case getTweets(userHandle: String, maxId: String?, authorization: String)
+    case analyze(document: GoogleDocumentRemoteModel)
 
-    private var apiCredentials: String { return "9G77kfE3C4aK3u925d8dgvjEy:2LNfH1IIEgdjuRbzPUC4Y8g6ITAAxi7n2RhtMDAOpp5KFeTcxc" }
+    private var twApiCredentials: String { return "9G77kfE3C4aK3u925d8dgvjEy:2LNfH1IIEgdjuRbzPUC4Y8g6ITAAxi7n2RhtMDAOpp5KFeTcxc" }
+    private var gcpApiKey: String { return "AIzaSyBnCgiVE-r0PUmoj2PEqEjVljhEDRnuPcU" }
 }
 
 extension ServiceProvider: TargetType {
@@ -25,6 +27,11 @@ extension ServiceProvider: TargetType {
                 fatalError("Error setting Twitter API URL")
             }
             return url
+        case .analyze:
+            guard let url = URL(string: "https://language.googleapis.com/v1beta2") else {
+                fatalError("Error setting Google API URL")
+            }
+            return url
         }
     }
 
@@ -33,12 +40,13 @@ extension ServiceProvider: TargetType {
         case .getBearerToken: return "/oauth2/token"
         case .searchUsers: return "/1.1/users/show.json"
         case .getTweets: return "/1.1/statuses/user_timeline.json"
+        case .analyze: return "/documents:analyzeSentiment"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getBearerToken: return .post
+        case .getBearerToken, .analyze: return .post
         case .searchUsers, .getTweets: return .get
         }
     }
@@ -59,18 +67,23 @@ extension ServiceProvider: TargetType {
                 parameters["max_id"] = maxId
             }
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
+        case .analyze(let document):
+            let documentData = try? JSONEncoder().encode(document)
+            return .requestCompositeData(bodyData: documentData ?? Data(), urlParameters: ["key": gcpApiKey])
         }
     }
 
     var headers: [String: String]? {
         switch self {
         case .getBearerToken:
-            let authToken = Data(apiCredentials.utf8).base64EncodedString()
+            let authToken = Data(twApiCredentials.utf8).base64EncodedString()
             return ["Authorization": "Basic \(authToken)",
                     "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"]
         case .searchUsers(_, let authorization), .getTweets(_, _, let authorization):
             return ["Authorization": "Bearer \(authorization)",
                     "Content-Type": "application/json"]
+        default:
+            return ["Content-Type": "application/json"]
         }
     }
 }

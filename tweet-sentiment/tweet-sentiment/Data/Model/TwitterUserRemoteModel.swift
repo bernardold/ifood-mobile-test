@@ -30,7 +30,7 @@ struct TwitterUserRemoteModel: Decodable {
 }
 
 extension TwitterUserRemoteModel {
-    func toDomainModel() -> TwitterUser {
+    func toDomainModel() -> Domain.TwitterUser {
         return TwitterUser(userId: userId,
                            name: name,
                            handle: screenName,

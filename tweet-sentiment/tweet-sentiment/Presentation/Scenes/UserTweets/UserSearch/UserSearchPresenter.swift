@@ -19,7 +19,6 @@ struct UserSearchPresenter {
 
 extension UserSearchPresenter {
     func setup() {
-
         view?.searchUser
             .flatMap({ username in
                 return self.searchUserUseCase.getSingle(request: SearchUserUseCase.Request(handle: username))

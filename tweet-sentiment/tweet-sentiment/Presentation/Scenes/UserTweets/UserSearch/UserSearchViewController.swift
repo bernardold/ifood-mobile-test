@@ -12,8 +12,6 @@ import RxCocoa
 import Kingfisher
 
 protocol UserSearchView: CoordinatorHolderView {
-    var searchUser: PublishSubject<String> { get }
-
     func displayFoundUser(twitterUser: UserSearchViewModel.User)
     func startLoading()
     func stopLoading()
@@ -24,7 +22,6 @@ class UserSearchViewController: UIViewController {
     var presenter: UserSearchPresenter!
     let disposeBag = DisposeBag()
 
-    var searchUser = PublishSubject<String>()
     var resultSelected = PublishSubject<UserSearchViewModel.User?>()
 
     var searchResult: UserSearchViewModel.User?
@@ -63,7 +60,9 @@ extension UserSearchViewController {
     fileprivate func setupObservables() {
         searchButton.rx.tap.asObservable()
             .map { [weak self] _ in return (self?.usernameTextField.text ?? "") }
-            .bind(to: searchUser)
+            .subscribe(onNext: { [weak self] username in
+                self?.presenter.askForTwitterUser(withHandle: username)
+            })
             .disposed(by: disposeBag)
 
         resultGestureRecognizer.rx.event.asObservable()
@@ -100,7 +99,7 @@ extension UserSearchViewController: UserSearchView {
 extension UserSearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        searchUser.onNext(textField.text ?? "")
+        presenter.askForTwitterUser(withHandle: textField.text ?? "")
         return true
     }
 }

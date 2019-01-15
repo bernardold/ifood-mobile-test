@@ -18,23 +18,18 @@ struct UserSearchPresenter {
 }
 
 extension UserSearchPresenter {
-    func setup() {
-        view?.searchUser
-            .flatMap({ username in
-                return self.searchUserUseCase.getSingle(request: SearchUserUseCase.Request(handle: username))
-                    .map({ $0.toViewModel() })
-                    .do(onSuccess: { user in
-                        self.view?.stopLoading()
-                        self.view?.displayFoundUser(twitterUser: user)
-                    }, onError: { error in
-                        self.view?.stopLoading()
-                        // TODO: handle errors
-                        print(error)
-                    }, onSubscribe: {
-                        self.view?.startLoading()
-                    })
-                    .asCompletable()
-                    .catchError({ _ in Completable.empty() })
+    func askForTwitterUser(withHandle handle: String) {
+        return self.searchUserUseCase.getSingle(request: SearchUserUseCase.Request(handle: handle))
+            .map({ $0.toViewModel() })
+            .do(onSuccess: { user in
+                self.view?.stopLoading()
+                self.view?.displayFoundUser(twitterUser: user)
+            }, onError: { error in
+                self.view?.stopLoading()
+                // TODO: handle errors
+                print(error)
+            }, onSubscribe: {
+                self.view?.startLoading()
             })
             .subscribe()
             .disposed(by: disposeBag)

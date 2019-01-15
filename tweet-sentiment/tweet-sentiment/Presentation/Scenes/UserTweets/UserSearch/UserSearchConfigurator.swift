@@ -22,8 +22,6 @@ extension Container {
         register(UserSearchPresenter.self) { resolver -> UserSearchPresenter in
             UserSearchPresenter(view: resolver.resolve(UserSearchViewController.self)!,
                                 searchUserUseCase: resolver.resolve(SearchUserUseCase.self)!)
-        }.initCompleted { (_, presenter) in
-            presenter.setup()
         }
     }
 }

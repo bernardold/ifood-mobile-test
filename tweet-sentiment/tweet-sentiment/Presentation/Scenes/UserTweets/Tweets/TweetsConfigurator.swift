@@ -21,7 +21,8 @@ extension Container {
 
         register(TweetsPresenter.self) { resolver -> TweetsPresenter in
             TweetsPresenter(view: resolver.resolve(TweetsViewController.self)!,
-                            getTweetsUseCase: resolver.resolve(GetTweetsUseCase.self)!)
+                            getTweetsUseCase: resolver.resolve(GetTweetsUseCase.self)!,
+                            analyzeTweetUseCase: resolver.resolve(AnalyzeTweetSentimentUseCase.self)!)
         }
     }
 }

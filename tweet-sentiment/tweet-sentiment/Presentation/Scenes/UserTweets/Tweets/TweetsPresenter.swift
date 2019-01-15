@@ -15,6 +15,7 @@ struct TweetsPresenter {
     let disposeBag = DisposeBag()
 
     let getTweetsUseCase: GetTweetsUseCase
+    let analyzeTweetUseCase: AnalyzeTweetSentimentUseCase
 }
 
 extension TweetsPresenter {
@@ -24,6 +25,19 @@ extension TweetsPresenter {
             .map({ $0.toViewModel() })
             .subscribe(onSuccess: { tweets in
                 self.view?.displayTweets(tweets, done: (tweets.count < 25))
+            }, onError: { error in
+                // TODO: handle Errors
+                print(error)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func analyze(tweet: TweetsViewModel.Tweet) {
+        let request = AnalyzeTweetSentimentUseCase.Request(tweetText: tweet.content)
+        analyzeTweetUseCase.getSingle(request: request)
+            .map({ $0.toViewModel() })
+            .subscribe(onSuccess: { sentiment in
+                self.view?.displaySentiment(forTweetId: tweet.tweetId, sentiment: sentiment)
             }, onError: { error in
                 // TODO: handle Errors
                 print(error)

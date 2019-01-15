@@ -10,8 +10,8 @@ import UIKit
 import RxSwift
 
 protocol TweetsView: CoordinatorHolderView {
-    var tweetSelected: PublishSubject<TweetsViewModel.Tweet> { get }
     func displayTweets(_ tweets: [TweetsViewModel.Tweet], done: Bool)
+    func displaySentiment(forTweetId tweetId: String, sentiment: TweetsViewModel.TweetSentiment)
 }
 
 class TweetsViewController: UIViewController {
@@ -22,8 +22,6 @@ class TweetsViewController: UIViewController {
     var selectedUser: UserSearchViewModel.User?
     var dataSource = [TweetsViewModel.Tweet]()
     var hasMore: Bool!
-
-    var tweetSelected = PublishSubject<TweetsViewModel.Tweet>()
 
     @IBOutlet var tableView: UITableView!
 
@@ -53,7 +51,9 @@ extension TweetsViewController {
                 guard let self = self else { throw NSError() }
                 return self.dataSource[indexPath.row]
             })
-            .bind(to: tweetSelected)
+            .subscribe(onNext: { [weak self] tweet in
+                self?.presenter.analyze(tweet: tweet)
+            })
             .disposed(by: disposeBag)
 
         tableView.rx.willDisplayCell.asObservable()
@@ -78,6 +78,10 @@ extension TweetsViewController: TweetsView {
         hasMore = !done
         dataSource.append(contentsOf: tweets)
         tableView.reloadData()
+    }
+
+    func displaySentiment(forTweetId tweetId: String, sentiment: TweetsViewModel.TweetSentiment) {
+        // TODO: Use sentiment data
     }
 }
 

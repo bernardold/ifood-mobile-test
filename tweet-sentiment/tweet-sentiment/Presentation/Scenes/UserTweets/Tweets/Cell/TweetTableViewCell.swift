@@ -32,12 +32,11 @@ class TweetTableViewCell: UITableViewCell {
         tweetLabel.text = tweet.content
         dateLabel.text = tweet.date
         sentimentView.isHidden = true
-
         profileImageView.layer.cornerRadius = (profileImageView.frame.width / 2.0)
 
         guard let sentiment = tweet.sentiment else { return }
         sentimentView.isHidden = false
-        sentimentView.layer.cornerRadius = 10.0
+        sentimentView.layer.cornerRadius = 14.0
         sentimentView.backgroundColor = sentiment.associatedColor
         sentimentLabel.text = sentiment.description
     }

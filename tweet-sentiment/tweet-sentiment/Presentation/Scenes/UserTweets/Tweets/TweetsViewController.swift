@@ -47,7 +47,9 @@ extension TweetsViewController {
         tableView.rx.itemSelected.asObservable()
             .do(onNext: { [weak self] indexPath in
                 self?.tableView.deselectRow(at: indexPath, animated: true)
-                self?.tableView.cellForRow(at: indexPath)?.isUserInteractionEnabled = false
+            })
+            .filter({  [weak self] indexPath in
+                self?.dataSource[indexPath.row].sentiment == nil
             })
             .map({ [weak self] indexPath in
                 guard let self = self else { throw NSError() }

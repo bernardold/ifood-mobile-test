@@ -65,18 +65,36 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="01/01/2019" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wry-Gk-hF3">
-                                <rect key="frame" x="0.0" y="50" width="220" height="156"/>
+                                <rect key="frame" x="0.0" y="50" width="220" height="106"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2x-2U-y2C">
-                                <rect key="frame" x="0.0" y="206" width="220" height="191.5"/>
+                                <rect key="frame" x="0.0" y="156" width="220" height="191.5"/>
                                 <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volupt</string>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w48-qx-9yi">
+                                <rect key="frame" x="0.0" y="347.5" width="220" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7Q-Ub-Yrp">
+                                        <rect key="frame" x="0.0" y="4" width="220" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Q7Q-Ub-Yrp" secondAttribute="trailing" id="D7x-CV-Yna"/>
+                                    <constraint firstItem="Q7Q-Ub-Yrp" firstAttribute="centerY" secondItem="w48-qx-9yi" secondAttribute="centerY" id="qS4-NM-Oq2"/>
+                                    <constraint firstItem="Q7Q-Ub-Yrp" firstAttribute="top" secondItem="w48-qx-9yi" secondAttribute="top" constant="4" id="rc6-4w-RwW"/>
+                                    <constraint firstItem="Q7Q-Ub-Yrp" firstAttribute="leading" secondItem="w48-qx-9yi" secondAttribute="leading" id="yFw-DM-9y7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                     </stackView>
                 </subviews>
@@ -96,6 +114,8 @@
                 <outlet property="handleLabel" destination="ds0-bN-SvO" id="kqA-yV-f1L"/>
                 <outlet property="nameLabel" destination="sAK-us-YY4" id="Af1-lW-VS7"/>
                 <outlet property="profileImageView" destination="CpP-8N-dit" id="Dfk-nZ-E5t"/>
+                <outlet property="sentimentLabel" destination="Q7Q-Ub-Yrp" id="xw8-aG-vXF"/>
+                <outlet property="sentimentView" destination="w48-qx-9yi" id="Blg-9f-XIT"/>
                 <outlet property="tweetLabel" destination="g2x-2U-y2C" id="dGe-4b-s9V"/>
                 <outlet property="verifiedView" destination="7Nz-ct-Vsb" id="RC7-b2-Diu"/>
             </connections>

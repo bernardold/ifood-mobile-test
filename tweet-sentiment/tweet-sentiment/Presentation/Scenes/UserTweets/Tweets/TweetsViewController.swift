@@ -39,6 +39,7 @@ extension TweetsViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.register(TweetTableViewCell.nib, forCellReuseIdentifier: TweetTableViewCell.identifier)
+        tableView.tableFooterView = makeFooterView()
         hasMore = true
     }
 
@@ -46,6 +47,7 @@ extension TweetsViewController {
         tableView.rx.itemSelected.asObservable()
             .do(onNext: { [weak self] indexPath in
                 self?.tableView.deselectRow(at: indexPath, animated: true)
+                self?.tableView.cellForRow(at: indexPath)?.isUserInteractionEnabled = false
             })
             .map({ [weak self] indexPath in
                 guard let self = self else { throw NSError() }
@@ -71,6 +73,22 @@ extension TweetsViewController {
             })
             .disposed(by: disposeBag)
     }
+
+    fileprivate func makeFooterView() -> UIView {
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 60.0))
+        let activityIndicator = UIActivityIndicatorView(style: .white)
+        activityIndicator.color = .primary
+        footer.addSubview(activityIndicator)
+        DispatchQueue.main.async {
+            activityIndicator.startAnimating()
+        }
+        activityIndicator.center = footer.center
+        return footer
+    }
+
+    fileprivate func removeLoadingFooter() {
+        tableView.tableFooterView = nil
+    }
 }
 
 extension TweetsViewController: TweetsView {
@@ -78,10 +96,15 @@ extension TweetsViewController: TweetsView {
         hasMore = !done
         dataSource.append(contentsOf: tweets)
         tableView.reloadData()
+
+        guard done else { return }
+        removeLoadingFooter()
     }
 
     func displaySentiment(forTweetId tweetId: String, sentiment: TweetsViewModel.TweetSentiment) {
-        // TODO: Use sentiment data
+        guard let index = dataSource.firstIndex(where: { tweet in return tweet.tweetId == tweetId }) else { return }
+        dataSource[index].sentiment = sentiment
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
 }
 

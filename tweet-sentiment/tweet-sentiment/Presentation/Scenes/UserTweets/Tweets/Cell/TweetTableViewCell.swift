@@ -16,6 +16,8 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet var handleLabel: UILabel!
     @IBOutlet var tweetLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var sentimentView: UIView!
+    @IBOutlet var sentimentLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +31,14 @@ class TweetTableViewCell: UITableViewCell {
         handleLabel.text = tweet.author.handle
         tweetLabel.text = tweet.content
         dateLabel.text = tweet.date
+        sentimentView.isHidden = true
 
         profileImageView.layer.cornerRadius = (profileImageView.frame.width / 2.0)
+
+        guard let sentiment = tweet.sentiment else { return }
+        sentimentView.isHidden = false
+        sentimentView.layer.cornerRadius = 10.0
+        sentimentView.backgroundColor = sentiment.associatedColor
+        sentimentLabel.text = sentiment.description
     }
 }

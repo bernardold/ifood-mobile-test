@@ -82,7 +82,7 @@ extension DomainError {
     func toTweetsViewModel() -> TweetsViewModel.Error {
         switch self {
         case .notFound:
-            return TweetsViewModel.Error(title: "No tweet", message: "This user has no tweets to be analyzed. Please another one.")
+            return TweetsViewModel.Error(title: "User hasn't tweeteed", message: "This user has no tweets to be analyzed. Please try another one.")
         case .notConnectedToInternet:
             return TweetsViewModel.Error(title: "Connection problem", message: "Check your Internet connection and try again.")
         case .authorizationError, .badRequest:

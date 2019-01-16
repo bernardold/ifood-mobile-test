@@ -24,6 +24,10 @@ extension TweetsPresenter {
         getTweetsUseCase.getSingle(request: request)
             .map({ $0.toViewModel() })
             .subscribe(onSuccess: { tweets in
+                guard !tweets.isEmpty else {
+                    self.view?.displayError(error: DomainError.notFound.toTweetsViewModel())
+                    return
+                }
                 self.view?.displayTweets(tweets, done: (tweets.count < 25))
             }, onError: { error in
                 guard let domainError = error as? DomainError else { return }

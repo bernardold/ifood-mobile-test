@@ -1,3 +1,25 @@
+
+# Tweet Sentiment
+This is a native iOS app developed with Swift 4.2 that uses data from Twitter and the help from Google's Natural Language API to retrieve users and their tweets and then analyze them.
+
+## Screenshots
+<img src="screenshots/img1.png" width="320" /><img src="screenshots/img2.png" width="320" />
+
+## Features
++ Search for a Twitter user
++ See a list of tweets from that user
++ Select a tweet to analyze it and have it classified as either Happy, Sad or Neutral
+
+## Architecture
+The project is organized with Clean Architecture and MVP for the presentation layer.
+
+## Note
+App uses CocoaPods, though the `Pods` folder is checked in the repository.
+
+use `pod install` only if necessary.
+
+## Case
+````
 # ifood-mobile-test
 Create an app that given an Twitter username it will list user's tweets. When I tap one of the tweets the app will visualy indicate if it's a happy, neutral or sad tweet.
 
@@ -16,3 +38,4 @@ Create an app that given an Twitter username it will list user's tweets. When I 
 * Use whatever language, tools and frameworks you feel comfortable to.
 * Briefly elaborate on your solution, architecture details, choice of patterns and frameworks.
 * Fork this repository and submit your code.
+````

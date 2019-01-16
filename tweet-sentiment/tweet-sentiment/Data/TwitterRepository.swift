@@ -19,7 +19,8 @@ struct TwitterRepository: TwitterDataRepository {
     }
 
     func getBearerToken() -> Single<BearerToken> {
-        // TODO: Save in memory and get from there if available (needs MemoryDataSource)
+        /* TODO: Improvement: Have a MemoryDataSource to save the bearer token in memory
+                 to prevent from calling service everytime */
         return twitterRemoteDataSource.getBearerToken().map({ $0.toDomainModel() })
     }
 

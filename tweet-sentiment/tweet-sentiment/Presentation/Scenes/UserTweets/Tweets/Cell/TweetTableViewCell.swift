@@ -19,11 +19,6 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet var sentimentView: UIView!
     @IBOutlet var sentimentLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
     func configure(withTweet tweet: TweetsViewModel.Tweet) {
         profileImageView.kf.setImage(with: tweet.author.profileImage)
         nameLabel.text = tweet.author.name

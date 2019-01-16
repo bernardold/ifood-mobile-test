@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TweetsViewController" customModule="tweet_sentiment" customModuleProvider="target">
             <connections>
+                <outlet property="loadingView" destination="P5O-gH-dmo" id="1ck-w4-14Y"/>
                 <outlet property="tableView" destination="3C3-js-Fdq" id="LVV-hB-2bp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,13 +27,31 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P5O-gH-dmo">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Y8A-ZV-LDu">
+                            <rect key="frame" x="169" y="315" width="37" height="37"/>
+                            <color key="color" red="0.47450980390000003" green="0.29411764709999999" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Y8A-ZV-LDu" firstAttribute="centerX" secondItem="P5O-gH-dmo" secondAttribute="centerX" id="3gk-nZ-5pn"/>
+                        <constraint firstItem="Y8A-ZV-LDu" firstAttribute="centerY" secondItem="P5O-gH-dmo" secondAttribute="centerY" id="iCN-c9-G6x"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="3C3-js-Fdq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="8Kb-ew-rpL"/>
                 <constraint firstItem="3C3-js-Fdq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Flh-zA-o5w"/>
+                <constraint firstItem="P5O-gH-dmo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NQy-Rt-G2b"/>
+                <constraint firstItem="P5O-gH-dmo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bCG-ru-ubD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3C3-js-Fdq" secondAttribute="trailing" id="bPo-GF-1wa"/>
+                <constraint firstAttribute="trailing" secondItem="P5O-gH-dmo" secondAttribute="trailing" id="caR-9s-Wfr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3C3-js-Fdq" secondAttribute="bottom" id="nLt-5u-rUP"/>
+                <constraint firstAttribute="bottom" secondItem="P5O-gH-dmo" secondAttribute="bottom" id="sxS-Is-nRb"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

@@ -13,6 +13,8 @@ protocol TweetsView: CoordinatorHolderView {
     func displayTweets(_ tweets: [TweetsViewModel.Tweet], done: Bool)
     func displaySentiment(forTweetId tweetId: String, sentiment: TweetsViewModel.TweetSentiment)
     func displayError(error: TweetsViewModel.Error)
+    func startLoading()
+    func stopLoading()
 }
 
 class TweetsViewController: UIViewController {
@@ -25,6 +27,7 @@ class TweetsViewController: UIViewController {
     var hasMore: Bool!
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var loadingView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +122,14 @@ extension TweetsViewController: TweetsView {
         }
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
+    }
+
+    func startLoading() {
+        loadingView.isHidden = false
+    }
+
+    func stopLoading() {
+        loadingView.isHidden = true
     }
 }
 

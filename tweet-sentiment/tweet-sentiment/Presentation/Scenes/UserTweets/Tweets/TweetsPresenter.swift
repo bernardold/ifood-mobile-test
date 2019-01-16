@@ -36,12 +36,17 @@ extension TweetsPresenter {
         let request = AnalyzeTweetSentimentUseCase.Request(tweetText: tweet.content)
         analyzeTweetUseCase.getSingle(request: request)
             .map({ $0.toViewModel() })
-            .subscribe(onSuccess: { sentiment in
+            .do(onSuccess: { sentiment in
+                self.view?.stopLoading()
                 self.view?.displaySentiment(forTweetId: tweet.tweetId, sentiment: sentiment)
             }, onError: { error in
+                self.view?.stopLoading()
                 guard let domainError = error as? DomainError else { return }
                 self.view?.displayError(error: domainError.toTweetsViewModel())
+            }, onSubscribe: {
+                self.view?.startLoading()
             })
+            .subscribe()
             .disposed(by: disposeBag)
     }
 }
